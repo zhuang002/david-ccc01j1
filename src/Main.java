@@ -12,7 +12,7 @@ public class Main {
 			}
 		}
 		
-		for (int i=0;i<=h/2;i++) {
+		for (int i=0;i<=h/2;i++) { // only draw half of the canvas
 			
 			drawLine(i, canvas);
 		}
@@ -34,19 +34,25 @@ public class Main {
 	}
 
 	private static void drawLine(int lineNumber, char[][] canvas) {
+		// only calculate the upper part of the canvas;
 		
+		// draw upper part left stars.
 		for (int i=0;i<lineNumber*2+1;i++) {
 			canvas[lineNumber][i] = '*';
 		}
 		
+		// draw upper part right stars;
 		for (int i=0;i<lineNumber*2+1;i++) {
 			canvas[lineNumber][canvas[0].length-1-i] = '*';
 		}
 		
+		
+		// draw lower part left stars;
 		for (int i=0;i<lineNumber*2+1;i++) {
 			canvas[canvas.length-1-lineNumber][i] = '*';
 		}
 		
+		// draw lower part right stars;
 		for (int i=0;i<lineNumber*2+1;i++) {
 			canvas[canvas.length-1-lineNumber][canvas[0].length-1-i] = '*';
 		}
