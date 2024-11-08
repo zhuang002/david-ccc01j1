@@ -5,32 +5,57 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int h = sc.nextInt();
-		
-		for (int i=0;i<h;i++) {
-			printLine(i, h);
+		char[][] canvas = new char[h][2*h];
+		for (int i=0;i<canvas.length;i++) {
+			for (int j=0;j<canvas[0].length;j++) {
+				canvas[i][j] = ' ';
+			}
 		}
+		
+		for (int i=0;i<=h/2;i++) {
+			
+			drawLine(i, canvas);
+		}
+		
+		
+		
+		printCanvas(canvas);
+		
 	}
 
-	private static void printLine(int lineNumber, int h) {
-		int nStars;
-		int nSpace;
-		
-		if (lineNumber<h/2) {
-			nStars = lineNumber*2+1;
-			nSpace = 2*h - nStars*2;
-		} else {
-			nStars = (h-lineNumber-1)*2+1;
-			nSpace = 2*h - nStars*2;
+	private static void printCanvas(char[][] canvas) {
+		for (int i=0;i<canvas.length;i++) {
+			for (int j=0;j<canvas[0].length;j++) {
+				System.out.print(canvas[i][j]);
+			}
+			System.out.println();
 		}
 		
-		for (int i=0;i<nStars;i++)
-			System.out.print("*");
-		for (int i=0;i<nSpace;i++)
-			System.out.print(" ");
-		for (int i=0;i<nStars;i++)
-			System.out.print("*");
-		System.out.println();
+	}
+
+	private static void drawLine(int lineNumber, char[][] canvas) {
+		
+		for (int i=0;i<lineNumber*2+1;i++) {
+			canvas[lineNumber][i] = '*';
+		}
+		
+		for (int i=0;i<lineNumber*2+1;i++) {
+			canvas[lineNumber][canvas[0].length-1-i] = '*';
+		}
+		
+		for (int i=0;i<lineNumber*2+1;i++) {
+			canvas[canvas.length-1-lineNumber][i] = '*';
+		}
+		
+		for (int i=0;i<lineNumber*2+1;i++) {
+			canvas[canvas.length-1-lineNumber][canvas[0].length-1-i] = '*';
+		}
+		
 		
 	}
+	
+	
+
+	
 
 }
